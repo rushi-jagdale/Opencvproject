@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Select employee to change | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+  
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css">
+  
+  
+    <script src="/jsi18n/"></script>
+  
+  
+  
+
+
+
+
+<script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+<script src="/static/admin/js/core.js"></script>
+<script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script src="/static/admin/js/actions.js"></script>
+<script src="/static/admin/js/urlify.js"></script>
+<script src="/static/admin/js/prepopulate.js"></script>
+<script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-c360app model-employee change-list"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+        <img src="/static/images/logowhite.png" height="40px" />
+        </div>
+        
+        
+        <div id="user-tools">
+            
+                Welcome,
+                <strong>{{request.user}}</strong>.
+            
+            
+                
+                    <a href="/">View site</a> /
+                
+                
+                    
+                    
+                
+                
+                <a href="/password_change/">Change password</a> /
+                
+                <a href="/logout/">Log out</a>
+            
+        </div>
+        
+        
+        
+    </div>
+    <!-- END Header -->
+    
+<div class="breadcrumbs">
+<a href="/">Home</a>
+&rsaquo; <a href="/c360app/">C360App</a>
+&rsaquo;<a href="{%url 'emplogin'%}"> Employees</a>
+</div>
+
+    
+
+    <div class="main shifted" id="main">
+      
+        
+          
+<button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Toggle navigation"></button>
+
+
+
+  
+   
+  
+    <div class="app-c360app module current-app">
+     
+
+
+  <table id="">
+    	<tr class="header">
+      	<th width="200">ID</th>
+      	<th width="300">Name</th>
+        
+  	</tr>
+
+  	{% for emp in emp_list %}
+  		<tr style="height: 50px; width: 50px;">
+  			<td>{{emp.id}}</td>
+  			<td><a href="{% url 'click_photos' emp.id %}">{{emp.firstname}}</a></td>
+       
+  		</tr>
+  	{% endfor %}
+  </table>
+
+<button><a class="btn btn-primary"  href="{% url 'train_model' %}" style="font-size: 20px; margin-bottom: 10px;">Train model</a>
+</button>
+</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+
+
+<!-- last -->
+<fieldset>
+
+    <!-- new camera -->
+
+    <!-- old -->
+   
+      <div class="content">
+        <!-- Content -->
+        <div id="content" class="colM"> 
+          <!-- <h1>Add patient</h1> -->
+          <div id="content-main">
+
+<form method="post" id="patient_form" novalidate>
+    {%csrf_token%}
+    <!-- <input type="hidden" name="csrfmiddlewaretoken" value="8JkFfbHEy1Y6mG8vCzD9QDY5KC0j1wt5eEVJh5bXjV5CagCOjTCJ5v2ivpbXkZzU"> -->
+<div>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   </div>
+    
+        <div class="form-row field-name">
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_name">Name:</label>
+                        
+                            <input type="text" name="name" class="vTextField" maxlength="100" required id="id_name" onclick="final(this)">
+                        
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-gender">
+            
+                <div>
+                  
+                    
+                        <label class="required" for="id_gender">Gender:</label>
+
+                          <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                          </select>
+                        
+                            <!-- <input type="" name="gender" class="vTextField" maxlength="15" required id="id_gender" onclick="final(this)"> -->
+                        
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-address">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_address">Address:</label>
+                        
+                            <textarea name="address" cols="40" rows="10" class="vLargeTextField" required id="id_address" onclick="final(this)">
+</textarea>
+                        
+                </div>
+            
+        </div>
+    
+    <i class="fa fa-microphone" class="align-bottom" style="font-size:30px" onclick="abc(this)"></i>
+   
+
+
+
+
+
+<!-- <i class="fa fa-microphone" class="align-bottom" style="font-size:24px" onclick="abc(this)"></i> -->
+
+<div>
+
+<input type="submit" value="Save" class="default" name="_save">
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+
+
+</div>
+<!-- copy -->
+<!-- end copy -->
+    <script id="django-admin-form-add-constants"
+            src="/static/admin/js/change_form.js"
+            
+                data-model-name="patient"
+            
+            async>
+    </script>
+    
+    <script>
+       
+        var id
+        function final(t) {
+            id = t.id
+            console.log(id)
+        }
+        function abc(t) {
+            startDictation1(id)
+        }
+        function Toggle() {
+            var temp = document.getElementById("password");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+        function startDictation1(variable) {
+            console.log(variable)
+            if (window.hasOwnProperty('webkitSpeechRecognition')) {
+                let speechRecognition = new webkitSpeechRecognition();
+                let final_transcript = "";
+                continuous = true;
+                interimResults = true;
+                lang = "en-US";
+                speechRecognition.start();
+                speechRecognition.onresult = (event) => {
+                    let interim_transcript = "";
+                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                        if (event.results[i].isFinal) {
+                            final_transcript += event.results[i][0].transcript;
+                        } else {
+                            interim_transcript += event.results[i][0].transcript;
+                        }
+                    }
+                    document.getElementById(variable).value = final_transcript
+                };
+            } else {
+                console.log("Speech Recognition Not Available");
+            }
+        }
+    </script>
+       
+
+<script id="django-admin-prepopulated-fields-constants"
+        src="/static/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+          
+          <br class="clear">
+        </div>
+        <!-- END Content -->
+        <div id="footer"></div>
+      </div>
+    </div>
+</div>
+<!-- END Container -->
+</body>
+</html>
+   
+
+</fieldset>
